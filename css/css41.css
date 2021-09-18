@@ -1,0 +1,1007 @@
+<?php header('Content-type: text/css'); ?>
+<style>
+* { margin: 0; padding: 0; }
+
+.container1 {
+
+	margin: 50px auto 20px 50px;
+	position:  relative;
+	width: 180px;
+	height: 300px;
+	/* задаем глубину сцене */
+	-webkit-perspective: 600px; /* webkit */
+	-moz-perspective: 600px; /* mozilla */
+	-ms-perspective: 600px; /* IE 10 */
+	-o-perspective: 600px; /* opera когда-то тоже должна начать понимать */
+	perspective: 600px;	/* св-во по стандатам */
+
+}
+
+
+
+#card { /* поворачивать будем общий контейнер */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 110%;
+	position: absolute;
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-ms-transition: -moz-transform 0.5s;
+	-o-transition: -o-transform 0.5s;
+	transition: transform 1.5s; /* трансформации будут происходить анимированно продолжительностью 1.5 сек */
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;	/* указываем, что дочерние элементы находятся в 3D пространстве */
+}
+#card.flip {	/* добавляя этот класс, поворачивеам контейнер на 180 градусов */
+	
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY( 180deg );
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );
+}
+
+#card1 { /* поворачивать будем общий контейнер */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 110%;
+	position: absolute;
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-ms-transition: -moz-transform 0.5s;
+	-o-transition: -o-transform 0.5s;
+	transition: transform 1.8s; /* трансформации будут происходить анимированно продолжительностью 1.5 сек */
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;	/* указываем, что дочерние элементы находятся в 3D пространстве */
+}
+#card1.flip {	/* добавляя этот класс, поворачивеам контейнер на 180 градусов */
+	
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY( 180deg );
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );
+}
+
+#card2 { /* поворачивать будем общий контейнер */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 110%;
+	position: absolute;
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-ms-transition: -moz-transform 0.5s;
+	-o-transition: -o-transform 0.5s;
+	transition: transform 2.1s; /* трансформации будут происходить анимированно продолжительностью 1.5 сек */
+	
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;	/* указываем, что дочерние элементы находятся в 3D пространстве */
+}
+#card2.flip {	/* добавляя этот класс, поворачивеам контейнер на 180 градусов */
+	
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY( 180deg );
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );
+}
+figure {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;	/* если элемент отвернут лицом от пользователя, контент этого элемента не виден */
+}
+.back {
+        border-radius: 10px;
+	background: url("../imagesdur/BackL.jpg") no-repeat center top scroll;
+background-size: 100% auto;
+padding-bottom: 50%;
+        
+}
+.front-0 {
+        border-radius: 10px;
+	background: url("../imagesdur/0.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+
+.front-1 {
+        border-radius: 10px;
+	background: url("../imagesdur/1.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-2 {
+        border-radius: 10px;
+	background: url("../imagesdur/2.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-3 {
+        border-radius: 10px;
+	background: url("../imagesdur/3.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-4 {
+        border-radius: 10px;
+	background: url("../imagesdur/4.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-5 {
+        border-radius: 10px;
+	background: url("../imagesdur/5.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-6 {
+        border-radius: 10px;
+	background: url("../imagesdur/6.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-7 {
+        border-radius: 10px;
+	background: url("../imagesdur/7.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-8 {
+        border-radius: 10px;
+	background: url("../imagesdur/8.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-9 {
+        border-radius: 10px;
+	background: url("../imagesdur/9.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-10 {
+        border-radius: 10px;
+	background: url("../imagesdur/10.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-11 {
+        border-radius: 10px;
+	background: url("../imagesdur/11.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-12 {
+        border-radius: 10px;
+	background: url("../imagesdur/12.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-13 {
+        border-radius: 10px;
+	background: url("../imagesdur/13.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-14 {
+        border-radius: 10px;
+	background: url("../imagesdur/14.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-15 {
+        border-radius: 10px;
+	background: url("../imagesdur/15.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-16 {
+        border-radius: 10px;
+	background: url("../imagesdur/16.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-17 {
+        border-radius: 10px;
+	background: url("../imagesdur/17.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-18 {
+        border-radius: 10px;
+	background: url("../imagesdur/18.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-19 {
+        border-radius: 10px;
+	background: url("../imagesdur/19.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-20 {
+        border-radius: 10px;
+	background: url("../imagesdur/20.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-21 {
+        border-radius: 10px;
+	background: url("../imagesdur/21.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-22 {
+        border-radius: 10px;
+	background: url("../imagesdur/22.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-23 {
+        border-radius: 10px;
+	background: url("../imagesdur/23.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-24 {
+        border-radius: 10px;
+	background: url("../imagesdur/24.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-25 {
+        border-radius: 10px;
+	background: url("../imagesdur/25.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-26 {
+        border-radius: 10px;
+	background: url("../imagesdur/26.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-27 {
+        border-radius: 10px;
+	background: url("../imagesdur/27.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-28 {
+        border-radius: 10px;
+	background: url("../imagesdur/28.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-29 {
+        border-radius: 10px;
+	background: url("../imagesdur/29.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-30 {
+        border-radius: 10px;
+	background: url("../imagesdur/30.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-31 {
+        border-radius: 10px;
+	background: url("../imagesdur/31.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-32 {
+        border-radius: 10px;
+	background: url("../imagesdur/32.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-33 {
+        border-radius: 10px;
+	background: url("../imagesdur/33.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-34 {
+        border-radius: 10px;
+	background: url("../imagesdur/34.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-35 {
+        border-radius: 10px;
+	background: url("../imagesdur/35.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-36 {
+        border-radius: 10px;
+	background: url("../imagesdur/36.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-37 {
+        border-radius: 10px;
+	background: url("../imagesdur/37.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-38 {
+        border-radius: 10px;
+	background: url("../imagesdur/38.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-39 {
+        border-radius: 10px;
+	background: url("../imagesdur/39.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-40 {
+        border-radius: 10px;
+	background: url("../imagesdur/40.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-41 {
+        border-radius: 10px;
+	background: url("../imagesdur/41.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-42 {
+        border-radius: 10px;
+	background: url("../imagesdur/42.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-43 {
+        border-radius: 10px;
+	background: url("../imagesdur/43.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-44 {
+        border-radius: 10px;
+	background: url("../imagesdur/44.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-45 {
+        border-radius: 10px;
+	background: url("../imagesdur/45.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-46 {
+        border-radius: 10px;
+	background: url("../imagesdur/46.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-47 {
+        border-radius: 10px;
+	background: url("../imagesdur/47.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-48 {
+        border-radius: 10px;
+	background: url("../imagesdur/48.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-49 {
+        border-radius: 10px;
+	background: url("../imagesdur/49.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-50 {
+        border-radius: 10px;
+	background: url("../imagesdur/50.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-51 {
+        border-radius: 10px;
+	background: url("../imagesdur/51.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-52 {
+        border-radius: 10px;
+	background: url("../imagesdur/52.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-53 {
+        border-radius: 10px;
+	background: url("../imagesdur/53.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-54 {
+        border-radius: 10px;
+	background: url("../imagesdur/54.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-55 {
+        border-radius: 10px;
+	background: url("../imagesdur/55.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-56 {
+        border-radius: 10px;
+	background: url("../imagesdur/56.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-57 {
+        border-radius: 10px;
+	background: url("../imagesdur/57.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-58 {
+        border-radius: 10px;
+	background: url("../imagesdur/58.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-59 {
+        border-radius: 10px;
+	background: url("../imagesdur/59.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-60 {
+        border-radius: 10px;
+	background: url("../imagesdur/60.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-61 {
+        border-radius: 10px;
+	background: url("../imagesdur/61.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-62 {
+        border-radius: 10px;
+	background: url("../imagesdur/62.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-63 {
+        border-radius: 10px;
+	background: url("../imagesdur/63.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-64 {
+        border-radius: 10px;
+	background: url("../imagesdur/64.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-65 {
+        border-radius: 10px;
+	background: url("../imagesdur/65.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-66 {
+        border-radius: 10px;
+	background: url("../imagesdur/66.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-67 {
+        border-radius: 10px;
+	background: url("../imagesdur/67.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-68 {
+        border-radius: 10px;
+	background: url("../imagesdur/68.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-69 {
+        border-radius: 10px;
+	background: url("../imagesdur/69.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-70 {
+        border-radius: 10px;
+	background: url("../imagesdur/70.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-71 {
+        border-radius: 10px;
+	background: url("../imagesdur/71.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-72 {
+        border-radius: 10px;
+	background: url("../imagesdur/72.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-73 {
+        border-radius: 10px;
+	background: url("../imagesdur/73.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-74 {
+        border-radius: 10px;
+	background: url("../imagesdur/74.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-75 {
+        border-radius: 10px;
+	background: url("../imagesdur/75.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-76 {
+        border-radius: 10px;
+	background: url("../imagesdur/76.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.front-77 {
+        border-radius: 10px;
+	background: url("../imagesdur/77.jpg") no-repeat center top scroll;	
+	background-size: 100% auto;
+	padding-bottom: 50%;
+	-webkit-transform: rotateY( 180deg );
+	-moz-transform: rotateY( 180deg );
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY( 180deg );
+	transform: rotateY( 180deg );	/* в начальном положении фэйс карты к нам развернут на 180 градусов */
+}
+.header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.footer {
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  margin-top: 20px;
+  color: #999
+}
+body {
+background-color: Azure;
+}
+.p {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.p a {
+  text-decoration: underline;
+  color: blue;
+}
+
+</style>
+<script>
+
+</script>
+

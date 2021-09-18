@@ -1,0 +1,40 @@
+body {
+  background: #aaa;
+}
+.back,
+body,
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition-duration: .8s;
+  transform-style: preserve-3d;
+}
+/* определим стиль каждой карты */
+.card {
+  width: 240px;
+  height: 400px;
+  margin: 20px;
+  background: #efefef;
+  position: absolute;
+  transition-duration: .5s;
+  transition: all 1s linear;  
+}
+
+/* установим фон для карт */
+.cardAK {
+  background: url(../img/A.png);
+}
+.cardAQ {
+  background: url(../img/B.png);
+}
+/* вращаем элемент DOM на 90 градусов */
+.rotateRight {
+  transition-duration: .5s;
+  transform: rotate3d(0,0,1,170deg);
+}
+/* перемещение и масштабирование элемента DOM */
+.moveAndScale {
+  transform: rotate3d(0,0,1,15deg) translate3d(150px,150px,0) scale3d(1.5, 1.5, 2) 
+}
